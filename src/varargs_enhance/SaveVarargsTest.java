@@ -13,9 +13,12 @@ public class SaveVarargsTest {
     // and the method treats it as list of params
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
         list.add(100);
         list.add(200);
-        new SaveVarargsTest().loop(list);
+        list2.add(1);
+        list.add(2);
+        new SaveVarargsTest().loop(list, list2);
     }
 
     @SafeVarargs

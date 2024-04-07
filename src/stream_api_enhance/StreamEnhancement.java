@@ -9,24 +9,24 @@ public class StreamEnhancement {
     public static void main(String[] args) {
         // prior to java 9 we need to call
         // limit function explicitly to limit value
-        List<Integer> collect1 = Stream.iterate(1, i -> i * 2).limit(10).toList();
+        List<Integer> collect1 = Stream.iterate(1, i -> ++i).limit(10).collect(Collectors.toList());
         collect1.forEach(System.out::println);
 
         System.out.println("==== stream().iterate ===========================");
         // after java 9 release you can limit
-        // value in iterate method itself by passing preicate
+        // value in iterate method itself by passing predicate
 
-        List<Integer> collect2 = Stream.iterate(1, i -> i <= 10, i -> i * 2).toList();
+        List<Integer> collect2 = Stream.iterate(1, i -> i <= 10, i -> i * 2).collect(Collectors.toList());
         collect2.forEach(System.out::println);
 
         System.out.println("==== stream().takeWhile ===========================");
 
-        List<Integer> collect3 = Stream.of(12, 6, 3, 9, 6, 8, 0, 99).toList();
+        List<Integer> collect3 = Stream.of(12, 6, 3, 9, 6, 8, 0, 99).collect(Collectors.toList());
         collect3.stream().takeWhile(i->i%3==0).forEach(System.out::println);
 
         System.out.println("==== stream().dropWhile ===========================");
 
-        List<Integer> collect4 = Stream.of(12, 6, 3, 9, 6, 8, 0, 99).toList();
+        List<Integer> collect4 = Stream.of(12, 6, 3, 9, 6, 8, 36, 99).collect(Collectors.toList());
         collect4.stream().dropWhile(i->i%3==0).forEach(System.out::println);
 
         System.out.println("==== stream().ofNullable ===========================");
